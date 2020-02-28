@@ -6,6 +6,6 @@
     - image_name: kube-apiserver
   tasks:
     - import_role:
-      name: ca-client
+        name: ca-client
     - import_role:
-      name: kube-api-docker-compose
+        name: kube-api-docker-compose
