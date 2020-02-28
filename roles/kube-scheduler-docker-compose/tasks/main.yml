@@ -7,11 +7,11 @@
 - name: Create project folders
   file:
     path: "{{ PROJECT_DIR }}"
-    type: directory
+    state: directory
     owner: root
     group: root
     mode: 0644
-    recursive: true
+    recurse: true
 
 - name: prepare docker-compose.yml
   templates:
