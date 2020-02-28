@@ -2,7 +2,7 @@
 - hosts: masters
   vars:
     - PROJECT_FOLDER: "{{ PROJECT_BASED_DIR }}/kube-api"
-    - CERT_DIR: /etc/kube-api/tls
+    - CERT_NAME: service-account
     - image_name: kube-apiserver
   tasks:
     - import_role:
