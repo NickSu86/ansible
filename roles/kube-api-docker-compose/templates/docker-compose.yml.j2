@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+  {{ image_name }}:
+    image: {{ image_name }}:{{ version }}
+    container_name: {{ image_name }}
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    network_mode: host
+    command: 
+      - /usr/local/bin/kube-apiserver 
+      - --advertise-address={{ ansible_host }}
+      - --allow-privileged=true 
+      - --apiserver-count=3 
+      - --audit-log-maxage=30 
+      - --audit-log-maxbackup=3 
+      - --audit-log-maxsize=100 
+      - --audit-log-path=/var/log/audit.log 
+      - --authorization-mode=Node,RBAC 
+      - --bind-address=0.0.0.0 
+      - --client-ca-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}
+      - --enable-admission-plugins=NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota 
+      - --etcd-cafile={{ CERT_DIR }}/{{ CA_CERT_NAME }} 
+      - --etcd-certfile={{ CERT_DIR }}/{{ ETCD_CERT_NAME }} 
+      - --etcd-keyfile={{ CERT_DIR }}/{{ ETCD_KEY_NAME }} 
+      - --etcd-servers=https://10.240.0.10:2379,https://10.240.0.11:2379,https://10.240.0.12:2379 
+      - --event-ttl=1h 
+      - --encryption-provider-config={{ CERT_DIR }}/encryption-config.yaml 
+      - --kubelet-certificate-authority={{ CERT_DIR }}/{{ CA_CERT_NAME }}
+      - --kubelet-client-certificate={{ CERT_DIR }}/{{ K8S_CERT_NAME }}
+      - --kubelet-client-key={{ CERT_DIR }}/{{ K8S_KEY_NAME }}
+      - --kubelet-https=true 
+      - --runtime-config=api/all 
+      - --service-account-key-file={{ CERT_DIR }}/{{ SERVICE_ACCOUNT_CERT_NAME }} 
+      - --service-cluster-ip-range={{ CLUSTER_CIDR }} 
+      - --service-node-port-range=30000-32767 
+      - --tls-cert-file={{ CERT_DIR }}/{{ K8S_CERT_NAME }} 
+      - --tls-private-key-file={{ CERT_DIR }}/{{ K8S_KEY_NAME }}
+      - --v=2
+    environment:
+      - TZ={{ timezone }}
+    volumes:
+      - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"

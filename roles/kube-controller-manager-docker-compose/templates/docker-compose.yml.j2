@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  {{ image_name }}:
+    image: {{ image_name }}:{{ version }}
+    container_name: {{ image_name }}
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    network_mode: host
+    command: 
+      - /usr/local/bin/{{ image_name }}
+      - --address=0.0.0.0 
+      - --cluster-cidr={{ CLUSTER_CIDR }}
+      - --cluster-name={{ K8S_CLUSTER_NAME }} 
+      - --cluster-signing-cert-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}
+      - --cluster-signing-key-file={{ CERT_DIR }}/{{ CA_KEY_NAME }}
+      - --kubeconfig={{ CONFIG_DIR }}/{{ image_name }}.kubeconfig 
+      - --leader-elect=true 
+      - --root-ca-file={{ CERT_DIR }}/{{ CA_CERT_NAME }} 
+      - --service-account-private-key-file={{ CERT_DIR }}/{{ SERVICE_ACCOUNT_KEY_NAME }}
+      - --service-cluster-ip-range={{ CLUSTER_CIDR }} 
+      - --use-service-account-credentials=true 
+      - --v=2
+    environment:
+      - TZ={{ timezone }}
+    volumes:
+      - {{ KUBECONFIG_DIR }}:{{ CONFIG_DIR }}:ro
+      - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"

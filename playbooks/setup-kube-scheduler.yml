@@ -1,0 +1,13 @@
+---
+- hosts: master
+  vars:
+    - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-scheduler"
+    - CERT_NAME: kubernetes
+    - image_name: kube-scheduler
+  tasks:
+    - import_role:
+        name: ca-client
+    - import_role:
+        name: kube-scheduler-docker-compose
+      vars:
+        - CONFIG_DIR: "{{ PROJECT_DIR }}/config"

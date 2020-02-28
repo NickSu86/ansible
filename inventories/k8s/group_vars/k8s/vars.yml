@@ -1,0 +1,11 @@
+PROJECT_BASED_DIR: /projects/k8s
+TLS_DIR: /projects/k8s/tls
+version: 1.17.1
+CLUSTER_CIDR: 10.32.0.0/24
+CA_CERT_NAME: ca.pem
+CA_KEY_NAME: ca-key.pem
+K8S_CLUSTER_NAME: home-kube
+K8S_CERT_NAME: kubernetes.pem 
+K8S_KEY_NAME: kubernetes-key.pem 
+ETCD_CERT_NAME: kubernetes.pem
+ETCD_KEY_NAME: kubernetes-key.pem 

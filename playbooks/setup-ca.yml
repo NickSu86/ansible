@@ -1,0 +1,6 @@
+---
+- hosts: ca
+  become: True
+  tasks:
+    - import_role:
+        name: ca-server

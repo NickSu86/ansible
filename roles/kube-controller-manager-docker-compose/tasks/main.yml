@@ -1,0 +1,22 @@
+- name: Pull the image
+  docker_image:
+    name: registry.cn-hangzhou.aliyuncs.com/google_containers/{{ image_name }}:{{ version }}
+    source: pull
+    repository: "{{ image_name }}:{{ version }}"
+
+- name: Create project folders
+  file:
+    path: "{{ PROJECT_DIR }}"
+    type: directory
+    owner: root
+    group: root
+    mode: 0644
+    recursive: true
+
+- name: prepare docker-compose.yml
+  templates:
+    src: docker-compose.yml.j2
+    dest: "{{ PROJECT_DIR }}/docker-compose.yml"
+    owner: root
+    group: root
+    mode: 0644

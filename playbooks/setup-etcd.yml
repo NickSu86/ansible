@@ -1,0 +1,10 @@
+---
+- hosts: etcds
+  vars:
+    - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/etcd"
+    - CERT_NAME: kubernetes
+  tasks:
+    - import_role:
+        name: ca-client
+    - import_role:
+        name: etcd-docker-compose

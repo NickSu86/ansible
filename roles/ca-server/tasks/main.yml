@@ -1,0 +1,29 @@
+- name: Install cfssl tools
+  copy:
+    src: /usr/local/bin/{{ item }}
+    dest: /usr/local/bin/{{ item }}
+    owner: root
+    group: root
+    mode: "0755"
+  with_items:
+    - cfssl
+    - cfssljson
+
+- name: create certificate directory
+  file:
+    path: "{{ CERT_DIR }}"
+    state: directory
+
+- name: initialize ca
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ CERT_DIR }}/{{ item }}"
+  with_items:
+    - ca-config.json
+    - ca-csr.json
+
+- name: generate ca certs
+  shell:
+    "cfssl gencert -initca ca-csr.json | cfssljson -bare ca -"
+  args:
+    chdir: "{{ CERT_DIR }}"

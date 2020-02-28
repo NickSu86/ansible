@@ -1,0 +1,45 @@
+- name: Verify the cert and key exist or not, if yes, dont run next 2 steps {{ TLS_DIR }}
+  command: ls {{ TLS_DIR }}/{{ CERT_NAME }}.pem
+  ignore_errors: True
+  register: cert_exists
+
+- name: Verify the key 
+  command: ls {{ TLS_DIR }}/{{ CERT_NAME }}-key.pem
+  ignore_errors: True
+  register: key_exists
+
+- name: create certificate folder
+  file:
+    path: "{{ TLS_DIR }}"
+    state: directory
+
+- name: include
+  include: gen_certs.yml
+  delegate_to: localhost
+  when: cert_exists is failed 
+
+- name: distribute ca
+  copy:
+    src: "{{ CERT_DIR }}/ca.pem"
+    dest: "{{ TLS_DIR }}/"
+    owner: root
+    group: root
+    mode: "0400"
+
+- name: distribute certificates
+  copy:
+    src: "{{ CERT_DIR }}/{{ CERT_NAME }}.pem"
+    dest: "{{ TLS_DIR }}/"
+    owner: root
+    group: root
+    mode: "0400"
+  when: cert_exists is failed 
+
+- name: distribute key
+  copy:
+    src: "{{ CERT_DIR }}/{{ CERT_NAME }}-key.pem"
+    dest: "{{ TLS_DIR }}/"
+    owner: root
+    group: root
+    mode: "0400"
+  when: cert_exists is failed 

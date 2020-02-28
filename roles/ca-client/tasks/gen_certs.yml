@@ -1,0 +1,16 @@
+- name: create certificate folder
+  file:
+    path: "{{ CERT_DIR }}"
+    state: directory
+
+- name: prepare json for certificate
+  template:
+    src: ca-csr.json.j2
+    dest: "{{ CERT_DIR }}/{{ CERT_NAME }}.json"
+
+- name: generate certificate
+  shell:
+    /usr/local/bin/cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile={{ CERT_PROFILE }} {{ CERT_NAME }}.json | /usr/local/bin/cfssljson -bare {{ CERT_NAME }}
+  args:
+    chdir: "{{ CERT_DIR }}"
+
