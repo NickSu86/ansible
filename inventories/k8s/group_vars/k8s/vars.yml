@@ -1,6 +1,6 @@
 PROJECT_BASED_DIR: /projects/k8s
 TLS_DIR: /projects/k8s/tls
-version: 1.17.1
+version: v1.17.1
 CLUSTER_CIDR: 10.32.0.0/24
 CA_CERT_NAME: ca.pem
 CA_KEY_NAME: ca-key.pem

@@ -3,7 +3,7 @@
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/etcd"
     - CERT_NAME: kubernetes
-    - version: 3.2.24
+    - version: v3.2.24
   tasks:
     - import_role:
         name: ca-client
