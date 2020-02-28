@@ -1,7 +1,7 @@
 ---
 - hosts: masters
   vars:
-    - PROJECT_FOLDER: "{{ PROJECT_BASED_DIR }}/kube-api"
+    - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-api"
     - CERT_NAME: service-account
     - image_name: kube-apiserver
   tasks:
