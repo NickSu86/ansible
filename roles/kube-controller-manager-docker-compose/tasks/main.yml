@@ -14,7 +14,7 @@
     recursive: true
 
 - name: prepare docker-compose.yml
-  templates:
+  template:
     src: docker-compose.yml.j2
     dest: "{{ PROJECT_DIR }}/docker-compose.yml"
     owner: root

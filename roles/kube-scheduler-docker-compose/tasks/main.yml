@@ -22,7 +22,7 @@
     mode: 0644
 
 - name: prepare service configuration
-  templates:
+  template:
     src: kube-scheduler.yml.j2
     dest: "{{ CONFIG_DIR }}/kube-scheduler.yaml"
     owner: root
