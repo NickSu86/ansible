@@ -4,9 +4,12 @@
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-controller-manager"
     - CERT_NAME: kubernetes
     - image_name: kube-controller-manager
+    - COMPONENET_ROLE: system:kube-controller-manager
   tasks:
     - import_role:
         name: ca-client
+    - import_role:
+        name: kube-config-generator
     - import_role:
         name: kube-controller-manager-docker-compose
       vars:
