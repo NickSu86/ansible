@@ -7,6 +7,7 @@
       --kubeconfig={{ image_name }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
+    delegate_to: localhost
   - name: set-credential
     shell: kubectl config set-credentials {{ COMPONENET_ROLE }} \
       --client-certificate={{ image_name }}.pem \
@@ -15,6 +16,7 @@
       --kubeconfig={{ image_name }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
+    delegate_to: localhost
   - name: set-context
     shell: kubectl config set-context default \
       --cluster={{ K8S_CLUSTER_NAME }} \
@@ -22,3 +24,11 @@
       --kubeconfig={{ image_name }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
+    delegate_to: localhost
+  - name: distribute certificates
+    copy:
+      src: "{{ CERT_DIR }}/{{ image_name }}.kubeconfig"
+      dest: "{{ CONFIG_DIR }}/"
+      owner: root
+      group: root
+      mode: "0400"
