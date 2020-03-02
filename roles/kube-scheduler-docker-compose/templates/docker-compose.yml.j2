@@ -13,10 +13,9 @@ services:
         soft: 65536
         hard: 65536
     network_mode: host
-    command: 
-      - /usr/local/bin/kube-scheduler
-      - --config={{ CONFIG_DIR }}/kube-scheduler.yaml
-      - --v=2
+    command: [ "/usr/local/bin/kube-scheduler",
+    "--config={{ CONFIG_DIR }}/kube-scheduler.yaml",
+    "--v=2" ]
     environment:
       - TZ={{ timezone }}
     volumes:
