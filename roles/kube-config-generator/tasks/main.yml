@@ -5,16 +5,20 @@
       --embed-certs=true \
       --server=https://192.168.1.111:6443 \
       --kubeconfig={{ image_name }}.kubeconfig
+    args:
+        chdir: "{{ CERT_DIR }}"
   - name: set-credential
     shell: kubectl config set-credentials {{ COMPONENET_ROLE }} \
       --client-certificate={{ image_name }}.pem \
       --client-key={{ image_name }}-key.pem \
       --embed-certs=true \
       --kubeconfig={{ image_name }}.kubeconfig
+    args:
+        chdir: "{{ CERT_DIR }}"
   - name: set-context
     shell: kubectl config set-context default \
       --cluster={{ K8S_CLUSTER_NAME }} \
       --user={{ COMPONENET_ROLE }} \
       --kubeconfig={{ image_name }}.kubeconfig
-  args:
-      chdir: "{{ CERT_DIR }}"
+    args:
+        chdir: "{{ CERT_DIR }}"
