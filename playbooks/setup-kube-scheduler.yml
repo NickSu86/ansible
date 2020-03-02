@@ -1,5 +1,5 @@
 ---
-- hosts: master
+- hosts: masters
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-scheduler"
     - CERT_NAME: kubernetes
