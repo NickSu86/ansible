@@ -3,6 +3,7 @@
   vars:
     - CERT_NAME: admin
     - COMPONENET_ROLE: admin
+    - TLS_DIR: /opt/certs/k8s
   tasks:
     - import_role:
         name: ca-client
