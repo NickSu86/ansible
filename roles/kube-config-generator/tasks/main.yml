@@ -25,6 +25,11 @@
     args:
         chdir: "{{ CERT_DIR }}"
     delegate_to: localhost
+  - name: set-context
+    shell: kubectl config use-context default --kubeconfig={{ image_name }}.kubeconfig
+    args:
+        chdir: "{{ CERT_DIR }}"
+    delegate_to: localhost
   - name: distribute certificates
     copy:
       src: "{{ CERT_DIR }}/{{ image_name }}.kubeconfig"
