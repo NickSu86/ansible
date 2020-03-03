@@ -19,7 +19,7 @@ services:
     "--cluster-name={{ K8S_CLUSTER_NAME }}",
     "--cluster-signing-cert-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}",
     "--cluster-signing-key-file={{ CERT_DIR }}/{{ CA_KEY_NAME }}",
-    "--kubeconfig={{ CONFIG_DIR }}/{{ image_name }}.kubeconfig",
+    "--kubeconfig={{ CONTAINER_CONFIG_DIR }}/{{ image_name }}.kubeconfig",
     "--leader-elect=true", 
     "--root-ca-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}",
     "--service-account-private-key-file={{ CERT_DIR }}/{{ SERVICE_ACCOUNT_KEY_NAME }}",
@@ -29,7 +29,7 @@ services:
     environment:
       - TZ={{ timezone }}
     volumes:
-      - {{ KUBECONFIG_DIR }}:{{ CONFIG_DIR }}:ro
+      - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:
       driver: "json-file"

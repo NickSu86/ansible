@@ -14,12 +14,12 @@ services:
         hard: 65536
     network_mode: host
     command: [ "/usr/local/bin/kube-scheduler",
-    "--config={{ CONFIG_DIR }}/kube-scheduler.yaml",
+    "--config={{ CONTAINER_CONFIG_DIR }}/kube-scheduler.yaml",
     "--v=2" ]
     environment:
       - TZ={{ timezone }}
     volumes:
-      - {{ KUBECONFIG_DIR }}:{{ CONFIG_DIR }}:ro
+      - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:
       driver: "json-file"
