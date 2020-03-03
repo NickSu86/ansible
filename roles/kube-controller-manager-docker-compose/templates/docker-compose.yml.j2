@@ -14,7 +14,7 @@ services:
         hard: 65536
     network_mode: host
     command: [ "/usr/local/bin/{{ image_name }}",
-    "--address=0.0.0.0",
+    "--bind-address=0.0.0.0",
     "--cluster-cidr={{ CLUSTER_CIDR }}",
     "--cluster-name={{ K8S_CLUSTER_NAME }}",
     "--cluster-signing-cert-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}",
