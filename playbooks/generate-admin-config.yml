@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  vars:
+    - CERT_NAME: admin
+    - COMPONENET_ROLE: admin
+  tasks:
+    - import_role:
+        name: ca-client
+    - import_role:
+        name: kube-config-generator

@@ -27,3 +27,4 @@ ansible_user=root
 CERT_DIR=/opt/certs/k8s
 CERT_PROFILE=kubernetes
 timezone=Asia/Hong_Kong
+K8S_CLUSTER_NAME: home-kube
