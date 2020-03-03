@@ -3,9 +3,11 @@
   vars:
     - CERT_NAME: admin
     - COMPONENET_ROLE: admin
-    - TLS_DIR: /opt/certs/k8s
+    - TLS_DIR: /home/nick/k8s/cert
   tasks:
     - import_role:
         name: ca-client
     - import_role:
         name: kube-config-generator
+      vars:
+        - CERT_DIR: /home/nick/k8s/cert
