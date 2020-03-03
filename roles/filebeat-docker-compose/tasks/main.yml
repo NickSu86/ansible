@@ -1,0 +1,30 @@
+- name: Pull the image
+  docker_image:
+    name: store/elastic/filebeat:7.5.1:{{ version }}
+    source: pull
+    repository: "{{ image_name }}:{{ version }}"
+
+- name: Create project folders
+  file:
+    path: "{{ PROJECT_DIR }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+    recurse: true
+
+- name: prepare docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ PROJECT_DIR }}/docker-compose.yml"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: prepare filebeat config
+  template:
+    src: filebeat.yml.j2
+    dest: "{{ PROJECT_DIR }}/filebeat.yml"
+    owner: root
+    group: root
+    mode: 0644

@@ -1,0 +1,56 @@
+fields_under_root: true
+fields:
+  instance:
+    name: "{{inventory_hostname}}"
+
+filebeat:
+  shutdown_timeout: 10s
+  inputs:
+    - type: log
+      paths:
+        - /host/var/log/messages
+      fields:
+        log:
+          type: system-message
+          formats:
+            - syslog
+      fields_under_root: true
+      multiline:
+        pattern: "^ "
+        match: after
+      exclude_lines: [ "^ *$" ]
+    - type: log
+      paths:
+        - /host/var/log/cron
+      fields:
+        log:
+          type: system-cron
+          formats:
+            - syslog
+      fields_under_root: true
+      multiline:
+        pattern: "^ "
+        match: after
+      exclude_lines: [ "^ *$" ]
+    - type: log
+      paths:
+        - /host/var/lib/docker/containers/*/*-json.log
+      scan_frequency: 2s
+      fields:
+        log:
+          type: docker-container
+      fields_under_root: true
+      json:
+        message_key: log
+      multiline:
+        pattern: ":✈ "
+        match: after
+      exclude_lines: [ "^ *$" ]
+      ignore_older: 672h
+      harvester_limit: 64
+      close_inactive: 2m
+
+output:
+  logstash:
+    hosts: {{ logstash_ip }}
+    loadbalance: true

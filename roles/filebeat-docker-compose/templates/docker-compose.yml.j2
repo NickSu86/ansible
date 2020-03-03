@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  {{ image_name }}:
+    image: {{ image_name }}:{{ version }}
+    container_name: {{ image_name }}
+    restart: unless-stopped
+    user: root
+    privileged: true
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+        - IPC_LOCK
+    network_mode: host
+    environment:
+      - TZ={{ timezone }}
+    volumes:
+      - {{ PROJECT_DIR }}/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,z
+      - /var/log/messages:/host/var/log/messages:ro,z
+      - /var/log/cron:/host/var/log/cron:ro,z
+      - /var/lib/docker/containers:/host/var/lib/docker/containers:ro,z
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"
