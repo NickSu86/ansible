@@ -2,14 +2,19 @@
 - hosts: masters
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-scheduler"
-    - CERT_NAME: kubernetes
+    - CERT_NAME: kube-scheduler
     - image_name: kube-scheduler
     - K8S_ROLE: system:kube-scheduler
+    - COMPONENET_ROLE: system:kube-scheduler
+    - COMPONENET_GROUP: system:kube-scheduler
+    - CONTAINER_CONFIG_DIR: "/etc/kube-scheduler"
   tasks:
     - import_role:
         name: ca-client
     - import_role:
         name: kube-config-generator
+      vars:
+        - CONFIG_DIR: "{{ PROJECT_DIR }}/config"
     - import_role:
         name: kube-scheduler-docker-compose
       vars:
