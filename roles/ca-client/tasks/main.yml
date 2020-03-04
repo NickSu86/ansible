@@ -26,6 +26,14 @@
     group: root
     mode: "0400"
 
+- name: distribute ca
+  copy:
+    src: "{{ CERT_DIR }}/ca-key.pem"
+    dest: "{{ TLS_DIR }}/"
+    owner: root
+    group: root
+    mode: "0400"
+
 - name: distribute certificates
   copy:
     src: "{{ CERT_DIR }}/{{ CERT_NAME }}.pem"
