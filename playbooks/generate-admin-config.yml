@@ -7,6 +7,9 @@
     - name: COMPONENET_ROLE
       prompt: Enter the cluster role
       default: admin
+    - name: COMPONENET_GROUP
+      prompt: Enter the group
+      default: kubernetes
   vars:
     - TLS_DIR: /opt/certs/k8s
     - not_distribute: true
