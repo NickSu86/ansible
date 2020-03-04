@@ -4,6 +4,7 @@
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-controller-manager"
     - CERT_NAME: kube-controller-manager
     - image_name: kube-controller-manager
+    - K8S_ROLE: kube-controller-manager
     - COMPONENET_ROLE: system:kube-controller-manager
     - CONTAINER_CONFIG_DIR: "/etc/kube-controller-manager"
   tasks:

@@ -4,6 +4,7 @@
     - CERT_NAME: admin
     - COMPONENET_ROLE: admin
     - TLS_DIR: /home/nick/k8s/cert
+    - K8S_ROLE: admin
   tasks:
     - import_role:
         name: ca-client
