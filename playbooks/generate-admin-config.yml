@@ -1,14 +1,21 @@
 ---
 - hosts: localhost
+  vars_prompt:
+    - name: CERT_NAME
+      prompt: Enter the CERT_NAME
+      default: admin
+    - name: COMPONENET_ROLE
+      prompt: Enter the cluster role
+      default: admin
   vars:
-    - CERT_NAME: admin
-    - COMPONENET_ROLE: admin
-    - TLS_DIR: /home/nick/k8s/cert
-    - K8S_ROLE: admin
+    - TLS_DIR: /opt/certs/k8s
+    - not_distribute: true
+    - CERT_DIR: /opt/certs/k8s
+    - CERT_PROFILE: kubernetes
   tasks:
     - import_role:
         name: ca-client
     - import_role:
         name: kube-config-generator
       vars:
-        - CERT_DIR: /home/nick/k8s/cert
+        - kubeconfig_name: {{ CERT_NAME }}

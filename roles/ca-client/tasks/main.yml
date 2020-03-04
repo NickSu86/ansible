@@ -25,6 +25,7 @@
     owner: root
     group: root
     mode: "0400"
+  when: not_distribute is undefined
 
 - name: distribute ca
   copy:
@@ -33,6 +34,7 @@
     owner: root
     group: root
     mode: "0400"
+  when: not_distribute is undefined
 
 - name: distribute certificates
   copy:
@@ -41,7 +43,7 @@
     owner: root
     group: root
     mode: "0400"
-  when: cert_exists is failed 
+  when: cert_exists is failed and not_distribute is undefined
 
 - name: distribute key
   copy:
@@ -50,4 +52,4 @@
     owner: root
     group: root
     mode: "0400"
-  when: cert_exists is failed 
+  when: cert_exists is failed and not_distribute is undefined
