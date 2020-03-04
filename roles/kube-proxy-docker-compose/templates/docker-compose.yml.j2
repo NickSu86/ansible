@@ -13,9 +13,11 @@ services:
         soft: 65536
         hard: 65536
     network_mode: host
-    command: [ "/usr/local/bin/kube-scheduler",
-    "--config={{ CONTAINER_CONFIG_DIR }}/kube-scheduler.yaml",
+    command: [ "/usr/local/bin/{{ image_name }}",
+    "--config={{ CONTAINER_CONFIG_DIR }}/{{ image_name }}.yaml",
     "--v=2" ]
+    environment:
+      - HOSTNAME="{{ ansible_instance }}-{{ image_name }}"
     volumes:
       - /etc/timezone:/etc/timezone
       - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro

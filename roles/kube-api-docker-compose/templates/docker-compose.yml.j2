@@ -44,6 +44,7 @@ services:
     environment:
       - TZ={{ timezone }}
     volumes:
+      - /etc/timezone:/etc/timezone
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:
       driver: "json-file"

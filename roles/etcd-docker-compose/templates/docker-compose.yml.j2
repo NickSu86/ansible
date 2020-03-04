@@ -17,6 +17,7 @@ services:
     environment:
       - TZ={{ timezone }}
     volumes:
+      - /etc/timezone:/etc/timezone
       - {{ PROJECT_DIR }}/etc:/etc/etcd:rw
       - {{ PROJECT_DIR }}/lib/var:/var/lib/etcd:rw
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro

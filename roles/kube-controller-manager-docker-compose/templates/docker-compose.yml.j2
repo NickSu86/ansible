@@ -26,9 +26,8 @@ services:
     "--service-cluster-ip-range={{ CLUSTER_CIDR }}", 
     "--use-service-account-credentials=true", 
     "--v=2" ]
-    environment:
-      - TZ={{ timezone }}
     volumes:
+      - /etc/timezone:/etc/timezone
       - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:

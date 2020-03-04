@@ -43,7 +43,7 @@ filebeat:
       json:
         message_key: log
       multiline:
-        pattern: ":✈ "
+        pattern: "^[A-Z]0304"
         match: after
       exclude_lines: [ "^ *$" ]
       ignore_older: 672h
