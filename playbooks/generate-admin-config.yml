@@ -20,5 +20,3 @@
         name: ca-client
     - import_role:
         name: kube-config-generator
-      vars:
-        - kubeconfig_name: {{ CERT_NAME }}

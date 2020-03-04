@@ -4,16 +4,16 @@
       --certificate-authority=ca.pem \
       --embed-certs=true \
       --server=https://192.168.1.111:6443 \
-      --kubeconfig={{ kubeconfig_name }}.kubeconfig
+      --kubeconfig={{ CERT_NAME }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
     delegate_to: localhost
   - name: set-credential
     shell: kubectl config set-credentials {{ COMPONENET_ROLE }} \
-      --client-certificate={{ kubeconfig_name }}.pem \
-      --client-key={{ kubeconfig_name }}-key.pem \
+      --client-certificate={{ CERT_NAME }}.pem \
+      --client-key={{ CERT_NAME }}-key.pem \
       --embed-certs=true \
-      --kubeconfig={{ kubeconfig_name }}.kubeconfig
+      --kubeconfig={{ CERT_NAME }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
     delegate_to: localhost
@@ -21,18 +21,18 @@
     shell: kubectl config set-context default \
       --cluster={{ K8S_CLUSTER_NAME }} \
       --user={{ COMPONENET_ROLE }} \
-      --kubeconfig={{ kubeconfig_name }}.kubeconfig
+      --kubeconfig={{ CERT_NAME }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
     delegate_to: localhost
   - name: set-context
-    shell: kubectl config use-context default --kubeconfig={{ kubeconfig_name }}.kubeconfig
+    shell: kubectl config use-context default --kubeconfig={{ CERT_NAME }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
     delegate_to: localhost
   - name: distribute certificates
     copy:
-      src: "{{ CERT_DIR }}/{{ kubeconfig_name }}.kubeconfig"
+      src: "{{ CERT_DIR }}/{{ CERT_NAME }}.kubeconfig"
       dest: "{{ CONFIG_DIR }}/"
       owner: root
       group: root
