@@ -2,6 +2,7 @@
   apt:
     name: kubelet
     state: present
+    allow_unauthenticated: yes
 
 - name: prepare config
   template:
