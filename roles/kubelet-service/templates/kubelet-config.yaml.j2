@@ -15,5 +15,5 @@ clusterDNS:
 podCIDR: "${POD_CIDR}"
 resolvConf: "/run/systemd/resolve/resolv.conf"
 runtimeRequestTimeout: "15m"
-tlsCertFile: "{{ TLS_DIR }}/{{ instance_name }}.pem"
-tlsPrivateKeyFile: "{{ TLS_DIR }}/{{ instance_name }}-key.pem"
+tlsCertFile: "{{ TLS_DIR }}/{{ CERT_NAME }}.pem"
+tlsPrivateKeyFile: "{{ TLS_DIR }}/{{ CERT_NAME }}-key.pem"
