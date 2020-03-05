@@ -6,6 +6,7 @@
     - image_name: kube-apiserver
     - COMPONENT_ROLE: "{{ ansible_hostname }}"
     - COMPONENT_GROUP: kubernetes
+    - KUBERNETES_HOSTNAME: "{{ ansible_host }},kubernetes,kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.svc.cluster.local"
   tasks:
     - import_role:
         name: ca-client

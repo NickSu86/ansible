@@ -1,0 +1,19 @@
+---
+- hosts: wokers
+  vars:
+    - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kubelet"
+    - CERT_NAME: kubelet
+    - image_name: kubelet
+    - COMPONENT_ROLE: "system:node:{{ ansible_host }}"
+    - COMPONENT_GROUP: system:kubelet
+  tasks:
+    - import_role:
+        name: ca-client
+    - import_role:
+        name: kube-config-generator
+      vars:
+        - CONFIG_DIR: "{{ PROJECT_DIR }}/config"
+    - import_role:
+        name: kubelet-service
+      vars:
+        - CONFIG_DIR: "{{ PROJECT_DIR }}/config"

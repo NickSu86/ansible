@@ -2,7 +2,7 @@
 - hosts: etcds
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/etcd"
-    - CERT_NAME: kubernetes
+    - CERT_NAME: etcd
     - version: 3.4.3-0
     - COMPONENT_ROLE: "{{ ansible_hostname }}"
     - COMPONENT_GROUP: kubernetes
