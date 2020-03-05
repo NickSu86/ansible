@@ -4,10 +4,10 @@
     - name: CERT_NAME
       prompt: Enter the CERT_NAME
       default: admin
-    - name: COMPONENET_ROLE
+    - name: COMPONENT_ROLE
       prompt: Enter the cluster role
       default: admin
-    - name: COMPONENET_GROUP
+    - name: COMPONENT_GROUP
       prompt: Enter the group
       default: system:masters
   vars:
