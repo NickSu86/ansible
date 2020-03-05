@@ -2,11 +2,19 @@
 - hosts: masters
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-proxy"
-    - CERT_NAME: kubernetes
+    - CERT_NAME: kube-proxy
     - image_name: kube-proxy
+    - K8S_ROLE: system:kube-proxy
+    - COMPONENT_ROLE: system:kube-proxy
+    - COMPONENT_GROUP: system:kube-proxy
+    - CONTAINER_CONFIG_DIR: "/etc/kube-proxy"
   tasks:
     - import_role:
         name: ca-client
+    - import_role:
+        name: kube-config-generator
+      vars:
+        - CONFIG_DIR: "{{ PROJECT_DIR }}/config"
     - import_role:
         name: kube-proxy-docker-compose
       vars:

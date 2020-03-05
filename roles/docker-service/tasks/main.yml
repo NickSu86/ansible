@@ -1,16 +1,8 @@
 - name: install requirements
   apt:
-    name: "{{ item }}"
+    name: name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common', 'python-docker', 'python-apt']
     state: present
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - gnupg2
-    - software-properties-common
-    - python-docker
-    - python-apt
-
+ 
 - name: import gpg key for docker repo
   apt_key:
     url: https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg

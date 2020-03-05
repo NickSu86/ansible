@@ -26,5 +26,5 @@
   register: compose
 
 - name: start service
-  shell: docker-compose up -f "{{ PROJECT_DIR }}/docker-compose.yml" up -d --force-recreate
+  shell: docker-compose -f "{{ PROJECT_DIR }}/docker-compose.yml" up -d --force-recreate
   when: compose is changed

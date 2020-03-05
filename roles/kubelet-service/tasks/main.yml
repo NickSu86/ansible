@@ -1,0 +1,10 @@
+- name: install kubelet
+  apt:
+    name: kubelet
+    state: "{{ version }}"
+
+- name: prepare config
+  template:
+    src: kubelet-config.yaml.j2
+    dest: {{ CONFIG_DIR }}/kubelet-config.yaml
+    
