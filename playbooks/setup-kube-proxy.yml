@@ -9,16 +9,6 @@
     - COMPONENT_GROUP: system:node-proxier
     - CONTAINER_CONFIG_DIR: "/etc/kube-proxy"
   tasks:
-    - name: Add an Apt signing key, uses whichever key is at the URL
-      apt_key:
-        url: https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
-        state: present
-    - name: Add source
-      apt_repository:
-        repo: deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
-        state: present
-        filename: kubernetes
-        update_cache: yes
     - import_role:
         name: ca-client
     - import_role:
