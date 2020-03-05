@@ -9,7 +9,7 @@
       default: admin
     - name: COMPONENET_GROUP
       prompt: Enter the group
-      default: kubernetes
+      default: system:masters
   vars:
     - TLS_DIR: /opt/certs/k8s
     - not_distribute: true
