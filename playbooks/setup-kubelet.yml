@@ -1,11 +1,10 @@
 ---
-- hosts: wokers
+- hosts: workers
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kubelet"
     - CERT_NAME: kubelet
-    - image_name: kubelet
     - COMPONENT_ROLE: "system:node:{{ ansible_host }}"
-    - COMPONENT_GROUP: system:kubelet
+    - COMPONENT_GROUP: system:nodes
   tasks:
     - import_role:
         name: ca-client
