@@ -2,7 +2,7 @@
 - hosts: workers
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-proxy"
-    - CERT_NAME: kube-proxy
+    - CERT_NAME: kube-proxy-{{ ansible_hostname }}
     - image_name: kube-proxy
     - K8S_ROLE: system:kube-proxy
     - COMPONENT_ROLE: system:kube-proxy:{{ ansible_hostname }}

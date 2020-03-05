@@ -2,8 +2,8 @@
 - hosts: workers
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kubelet"
-    - CERT_NAME: kubelet
-    - COMPONENT_ROLE: "system:node:{{ ansible_host }}"
+    - CERT_NAME: kubelet-{{ ansible_hostname }}
+    - COMPONENT_ROLE: "system:node:{{ ansible_hostname }}"
     - COMPONENT_GROUP: system:nodes
   tasks:
     - import_role:
