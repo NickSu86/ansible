@@ -1,0 +1,11 @@
+---
+- hosts: masters
+  tasks:
+    - import_playbook:
+        name: setup-etcd.yml
+    - import_playbook:
+        name: setup-kube-api.yml
+    - import_playbook:
+        name: setup-kube-controller-manager.yml
+    - import_playbook:
+        name: setup-kube-scheduler.yml

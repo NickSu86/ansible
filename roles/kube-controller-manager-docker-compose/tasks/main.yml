@@ -20,3 +20,8 @@
     owner: root
     group: root
     mode: 0644
+  register: compose
+  
+- name: start service
+  shell: docker-compose up -f "{{ PROJECT_DIR }}/docker-compose.yml" up -d --force-recreate
+  when: compose is changed

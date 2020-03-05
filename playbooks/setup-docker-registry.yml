@@ -3,6 +3,7 @@
   vars:
     - PROJECT_DIR: "/srv/dockerized-service/registry"
     - version: latest
+    - image_name: registry
   tasks:
     - import_role:
         name: docker-registry-docker-compose

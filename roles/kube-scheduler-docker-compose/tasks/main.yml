@@ -20,6 +20,7 @@
     owner: root
     group: root
     mode: 0644
+  register: compose
 
 - name: prepare service configuration
   template:
@@ -28,3 +29,8 @@
     owner: root
     group: root
     mode: 0644
+  register: configuration
+
+- name: start service
+  shell: docker-compose up -f "{{ PROJECT_DIR }}/docker-compose.yml" up -d --force-recreate
+  when: compose is changed or configuration is changed
