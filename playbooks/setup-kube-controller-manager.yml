@@ -5,8 +5,8 @@
     - CERT_NAME: kube-controller-manager
     - image_name: kube-controller-manager
     - K8S_ROLE: system:kube-controller-manager
-    - COMPONENET_ROLE: system:kube-controller-manager
-    - COMPONENET_GROUP: system:kube-controller-manager
+    - COMPONENT_ROLE: system:kube-controller-manager
+    - COMPONENT_GROUP: system:kube-controller-manager
     - CONTAINER_CONFIG_DIR: "/etc/kube-controller-manager"
   tasks:
     - import_role:

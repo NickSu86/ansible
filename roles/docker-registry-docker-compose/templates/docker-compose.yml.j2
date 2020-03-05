@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  {{ image_name }}:
+    image: {{ image_name }}:{{ version }}
+    container_name: {{ image_name }}
+    restart: always
+    network_mode: host
+    environment:
+      - TZ={{ timezone }}
+      - REGISTRY_HTTP_SECRET=123456789
+    volumes:
+      - /etc/timezone:/etc/timezone
+      - ./lib/var:/var/lib/registry:rw
+    ports:
+      - "5000:5000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "10"

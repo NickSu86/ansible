@@ -1,0 +1,8 @@
+---
+- hosts: registry
+  vars:
+    - PROJECT_DIR: "/srv/dockerized-service/registry"
+    - version: latest
+  tasks:
+    - import_role:
+        name: docker-registry-docker-compose

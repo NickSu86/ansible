@@ -1,0 +1,24 @@
+- name: Pull the image
+  docker_image:
+    name: "{{ image_name }}:{{ version }}"
+    source: pull
+    repository: "{{ image_name }}:{{ version }}"
+
+- name: Create project folders
+  file:
+    path: "{{ PROJECT_DIR }}/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+    recurse: true
+  with_items:
+    - lib/var
+
+- name: prepare docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ PROJECT_DIR }}/docker-compose.yml"
+    owner: root
+    group: root
+    mode: 0644

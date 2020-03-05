@@ -4,6 +4,8 @@
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-api"
     - CERT_NAME: service-account
     - image_name: kube-apiserver
+    - COMPONENT_ROLE: "{{ ansible_hostname }}"
+    - COMPONENT_GROUP: kubernetes
   tasks:
     - import_role:
         name: ca-client
