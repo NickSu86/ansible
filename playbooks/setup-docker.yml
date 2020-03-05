@@ -1,5 +1,12 @@
 ---
 - hosts: all
   tasks:
+    - name: turn off swap
+      shell: swapoff -a
+    - name: disable swap
+      lineinfile:
+        dest: /etc/fstab
+        regexp: ".*swap.*"
+        state: absent
     - import_role:
         name: docker-service

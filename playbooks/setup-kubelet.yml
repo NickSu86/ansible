@@ -5,6 +5,7 @@
     - CERT_NAME: kubelet-{{ ansible_hostname }}
     - COMPONENT_ROLE: "system:node:{{ ansible_hostname }}"
     - COMPONENT_GROUP: system:nodes
+    - KUBERNETES_HOSTNAME: "{{ ansible_host }},{{ ansible_hostname }}"
   tasks:
     - name: Add an Apt signing key, uses whichever key is at the URL
       apt_key:

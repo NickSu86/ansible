@@ -6,10 +6,10 @@ authentication:
   webhook:
     enabled: true
   x509:
-    clientCAFile: "/var/lib/kubernetes/ca.pem"
+    clientCAFile: "{{ TLS_DIR }}/ca.pem"
 authorization:
   mode: Webhook
-clusterDomain: "cluster.local"
+clusterDomain: "kubernetes.local"
 clusterDNS:
   - "10.32.0.10"
 podCIDR: "${POD_CIDR}"
