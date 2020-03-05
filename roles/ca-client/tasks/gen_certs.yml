@@ -17,7 +17,7 @@
 
 - name: generate certificate
   shell:
-    /usr/local/bin/cfssl gencert -hostname={{ KUBERNETES_HOSTNAME }}-ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile={{ CERT_PROFILE }} {{ CERT_NAME }}.json | /usr/local/bin/cfssljson -bare {{ CERT_NAME }}
+    /usr/local/bin/cfssl gencert -hostname={{ KUBERNETES_HOSTNAME }} -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile={{ CERT_PROFILE }} {{ CERT_NAME }}.json | /usr/local/bin/cfssljson -bare {{ CERT_NAME }}
   args:
     chdir: "{{ CERT_DIR }}"
   when: KUBERNETES_HOSTNAME is defined

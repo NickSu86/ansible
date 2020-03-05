@@ -7,7 +7,7 @@
     - import_role:
         name: ca-client
       vars:
-        - CERT_NAME: service-account
+        - CERT_NAME: kubernetes
         - COMPONENT_ROLE: "{{ ansible_hostname }}"
         - COMPONENT_GROUP: kubernetes
         - KUBERNETES_HOSTNAME: "{{ ansible_host }},kubernetes,kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster,kubernetes.svc.cluster.local"
