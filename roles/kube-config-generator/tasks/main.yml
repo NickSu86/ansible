@@ -9,7 +9,7 @@
         chdir: "{{ CERT_DIR }}"
     delegate_to: localhost
   - name: set-credential
-    shell: kubectl config set-credentials {{ COMPONENET_ROLE }} \
+    shell: kubectl config set-credentials {{ COMPONENT_ROLE }} \
       --client-certificate={{ CERT_NAME }}.pem \
       --client-key={{ CERT_NAME }}-key.pem \
       --embed-certs=true \
@@ -20,7 +20,7 @@
   - name: set-context
     shell: kubectl config set-context default \
       --cluster={{ K8S_CLUSTER_NAME }} \
-      --user={{ COMPONENET_ROLE }} \
+      --user={{ COMPONENT_ROLE }} \
       --kubeconfig={{ CERT_NAME }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"
