@@ -19,7 +19,7 @@ services:
     environment:
       - HOSTNAME="{{ ansible_hostname }}-{{ image_name }}"
     volumes:
-      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
       - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:

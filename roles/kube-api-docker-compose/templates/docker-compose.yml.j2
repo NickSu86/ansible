@@ -41,10 +41,8 @@ services:
 "--tls-cert-file={{ CERT_DIR }}/{{ K8S_CERT_NAME }}",
 "--tls-private-key-file={{ CERT_DIR }}/{{ K8S_KEY_NAME }}",
 "--v=2"]
-    environment:
-      - TZ={{ timezone }}
     volumes:
-      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:
       driver: "json-file"

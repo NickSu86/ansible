@@ -17,7 +17,7 @@ services:
     "--config={{ CONTAINER_CONFIG_DIR }}/kube-scheduler.yaml",
     "--v=2" ]
     volumes:
-      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
       - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:
