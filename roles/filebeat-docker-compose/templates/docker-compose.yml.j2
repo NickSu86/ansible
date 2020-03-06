@@ -4,10 +4,10 @@ services:
   {{ image_name }}:
     image: {{ image_name }}:{{ version }}
     container_name: {{ image_name }}
-    restart: unless-stopped
     user: root
-    privileged: true
-    restart: unless-stopped
+    restart: always
+    labels:
+      co.elastic.logs/enabled: false
     ulimits:
       memlock:
         soft: -1

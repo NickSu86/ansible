@@ -1,6 +1,6 @@
 - name: install requirements
   apt:
-    name: name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common', 'python-docker', 'python-apt']
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common', 'python-docker', 'python-apt']
     state: present
  
 - name: import gpg key for docker repo
