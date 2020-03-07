@@ -7,12 +7,11 @@ Requires=docker.service
 [Service]
 ExecStart=/usr/bin/kubelet \
   --config={{ CONFIG_DIR }}/kubelet-config.yaml \
-  --container-runtime=docker \
-  --container-runtime-endpoint=unix:///var/run/docker.sock \
+  --resolv-conf=/etc/resolv.conf \
   --image-pull-progress-deadline=2m \
   --kubeconfig={{ CONFIG_DIR }}/{{ CERT_NAME }}.kubeconfig \
-  --network-plugin=cni \
   --register-node=true \
+  --pod-infra-container-image registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1 \
   --v=2
 Restart=on-failure
 RestartSec=5
