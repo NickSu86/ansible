@@ -10,3 +10,5 @@
         state: absent
     - import_role:
         name: docker-service
+    - import_playbook:
+        name: setup-filebeat.yml
