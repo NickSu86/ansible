@@ -10,14 +10,16 @@
   tasks:
     - name: Create CNI_PATH
       file:
-        path: {{ CNI_PATH }}
+        path: "{{ CNI_PATH }}"
         state: directory
         owner: root
         group: root
+        mode: 0644
+        recurse: true
     - name: Prepare cni bin
       unarchive:
         src: http://192.168.1.1/downloads/cni-plugins-linux-amd64-v0.8.5.tgz
-        path: {{ CNI_PATH }}
+        path: "{{ CNI_PATH }}"
         remote_src: yes
     - name: Add an Apt signing key, uses whichever key is at the URL
       apt_key:
