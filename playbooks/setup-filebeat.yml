@@ -8,4 +8,4 @@
 
   tasks:
     - import_role:
-      name: filebeat-docker-compose
+        name: filebeat-docker-compose
