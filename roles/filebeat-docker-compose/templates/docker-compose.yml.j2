@@ -1,10 +1,9 @@
 version: '2'
 
 services:
-  {{ image_name }}:
+  filebeat:
     image: {{ image_name }}:{{ version }}
-    container_name: {{ image_name }}
-    user: root
+    container_name: filebeat
     restart: always
     labels:
       co.elastic.logs/enabled: false
