@@ -5,6 +5,7 @@ services:
     image: {{ image_name }}:{{ version }}
     container_name: filebeat
     restart: always
+    user: root
     labels:
       co.elastic.logs/enabled: false
     ulimits:
@@ -20,6 +21,7 @@ services:
     environment:
       - TZ={{ timezone }}
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - {{ PROJECT_DIR }}/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,z
       - /var/log/messages:/host/var/log/messages:ro,z
       - /var/log/cron:/host/var/log/cron:ro,z
