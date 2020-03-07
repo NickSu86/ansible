@@ -15,6 +15,7 @@ services:
     network_mode: host
     command: [ "/usr/local/bin/{{ image_name }}",
     "--bind-address=0.0.0.0",
+    "--allocate-node-cidrs=true",
     "--cluster-cidr={{ CLUSTER_CIDR }}",
     "--cluster-name={{ K8S_CLUSTER_NAME }}",
     "--cluster-signing-cert-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}",

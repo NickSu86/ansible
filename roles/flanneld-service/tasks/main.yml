@@ -1,0 +1,5 @@
+- name: prepare bin
+
+- name: prepare service config
+
+- name: start service
