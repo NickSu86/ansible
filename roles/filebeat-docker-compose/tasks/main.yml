@@ -1,7 +1,8 @@
 - name: Pull the image
   docker_image:
-    name: "{{ image_name }}:{{ version }}"
+    name: "{{ registry }}/{{ image_name }}:{{ version }}"
     source: pull
+    repository: "{{ image_name }}:{{ version }}"
 
 - name: Create project folders
   file:

@@ -8,6 +8,7 @@
     - COMPONENT_ROLE: system:kube-controller-manager
     - COMPONENT_GROUP: system:kube-controller-manager
     - CONTAINER_CONFIG_DIR: "/etc/kube-controller-manager"
+    - registry: 192.168.1.1:5000
   tasks:
     - import_role:
         name: ca-client

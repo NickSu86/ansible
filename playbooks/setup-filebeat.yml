@@ -3,8 +3,9 @@
   vars:
      - logstash_ip: 192.168.1.1
      - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/filebeat"
-     - image_name: 192.168.1.1:5000/filebeat
+     - image_name: filebeat
      - version: 7.5.1
+     - registry: 192.168.1.1:5000
 
   tasks:
     - import_role:

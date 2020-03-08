@@ -1,7 +1,0 @@
-# Before this playbook, please make sure the prefix already set in etcd and is in version 2
-# ETCDCTL_API=2 etcdctl \
-# --endpoints=https://192.168.1.111:2379 \
-# --ca-file=/opt/certs/k8s/ca.pem \
-# --cert-file=/opt/certs/k8s/kubernetes.pem \
-# --key-file=/opt/certs/k8s/kubernetes-key.pem \
-# put /flanneld/config '{"Network":"10.32.0.0/24", "SubnetLen": 21, "Backend": {"Type": "vxlan"}}'
