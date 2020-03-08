@@ -9,6 +9,7 @@ ExecStart=/usr/bin/kubelet \
   --address={{ ansible_host }} \
   --config={{ CONFIG_DIR }}/kubelet-config.yaml \
   --resolv-conf=/etc/resolv.conf \
+  --node-ip={{ ansible_host }} \
   --image-pull-progress-deadline=2m \
   --kubeconfig={{ CONFIG_DIR }}/{{ CERT_NAME }}.kubeconfig \
   --register-node=true \
