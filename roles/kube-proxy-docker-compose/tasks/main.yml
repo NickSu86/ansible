@@ -22,15 +22,15 @@
     mode: 0644
   register: compose
 
-- name: prepare service configuration
-  template:
-    src: "{{ image_name }}.yml.j2"
-    dest: "{{ CONFIG_DIR }}/{{ image_name }}.yaml"
-    owner: root
-    group: root
-    mode: 0644
-  register: configuration
+# - name: prepare service configuration
+#   template:
+#     src: "{{ image_name }}.yml.j2"
+#     dest: "{{ CONFIG_DIR }}/{{ image_name }}.yaml"
+#     owner: root
+#     group: root
+#     mode: 0644
+#   register: configuration
 
 - name: start service
   shell: docker-compose -f "{{ PROJECT_DIR }}/docker-compose.yml" up -d --force-recreate
-  when: compose is changed or configuration is changed
+  when: compose is changed

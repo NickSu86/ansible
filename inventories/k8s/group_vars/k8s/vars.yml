@@ -8,3 +8,4 @@ K8S_CERT_NAME: kubernetes.pem
 K8S_KEY_NAME: kubernetes-key.pem 
 ETCD_CERT_NAME: kubernetes.pem
 ETCD_KEY_NAME: kubernetes-key.pem 
+REGISTRY: registry.cn-hangzhou.aliyuncs.com/google_containers

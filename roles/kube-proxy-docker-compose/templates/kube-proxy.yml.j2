@@ -1,6 +1,0 @@
-kind: KubeProxyConfiguration
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
-clientConnection:
-  kubeconfig: "{{ CONTAINER_CONFIG_DIR }}/{{ image_name }}.yaml"
-mode: "iptables"
-clusterCIDR: "{{ CLUSTER_CIDR }}"

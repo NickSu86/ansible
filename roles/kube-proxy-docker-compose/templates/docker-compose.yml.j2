@@ -16,7 +16,7 @@ services:
     network_mode: host
     command: [ "/usr/local/bin/{{ image_name }}",
     "--bind-address={{ ansible_host }}",
-    "--kubeconfig={{ CONTAINER_CONFIG_DIR }}/{{ image_name }}.kubeconfig",
+    "--kubeconfig={{ CONTAINER_CONFIG_DIR }}/{{ image_name }}-{{ ansible_hostname }}.kubeconfig",
     "--proxy-mode=iptables",
     "--cluster-cidr={{ CLUSTER_CIDR }}",
     "--v=2" ]
