@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-     - logstash_ip: 192.168.1.1
+     - logstash_ip: 192.168.1.1:5044
      - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/filebeat"
      - image_name: filebeat
      - version: 7.5.1
