@@ -1,5 +1,8 @@
 ---
 - hosts: all
+  vars:
+    - docker_apt_key: http://192.168.1.1/downloads/docker-debian-gpg
+    - docker_compose_url: http://192.168.1.1/downloads/docker-compose
   tasks:
     - name: turn off swap
       shell: swapoff -a
@@ -10,5 +13,3 @@
         state: absent
     - import_role:
         name: docker-service
-    - import_playbook:
-        name: setup-filebeat.yml

@@ -1,0 +1,12 @@
+ansible_user: root
+CERT_DIR: /opt/certs/k8s
+CERT_PROFILE: kubernetes
+timezone: Asia/Hong_Kong
+
+### K8S related
+K8S_CLUSTER_NAME: home-kube
+
+### docker related
+docker_apt_key: https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg
+docker_repo: deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/debian stretch stable
+docker_compose_url: https://get.daocloud.io/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64

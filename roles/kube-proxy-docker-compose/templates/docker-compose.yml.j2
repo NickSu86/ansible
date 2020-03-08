@@ -4,7 +4,8 @@ services:
   {{ image_name }}:
     image: {{ image_name }}:{{ version }}
     container_name: {{ image_name }}
-    restart: unless-stopped
+    restart: always
+    privileged: true
     ulimits:
       memlock:
         soft: -1
@@ -14,12 +15,16 @@ services:
         hard: 65536
     network_mode: host
     command: [ "/usr/local/bin/{{ image_name }}",
-    "--config={{ CONTAINER_CONFIG_DIR }}/{{ image_name }}.yaml",
+    "--bind-address={{ ansible_host }}",
+    "--kubeconfig={{ CONTAINER_CONFIG_DIR }}/{{ image_name }}.kubeconfig",
+    "--proxy-mode=iptables",
+    "--cluster-cidr={{ CLUSTER_CIDR }}",
     "--v=2" ]
     environment:
       - HOSTNAME="{{ ansible_hostname }}-{{ image_name }}"
     volumes:
-      - /etc/localtime:/etc/localtime
+      - /etc/localtime:/etc/localtime:ro
+      - /lib/modules:/lib/modules:ro
       - {{ CONFIG_DIR }}:{{ CONTAINER_CONFIG_DIR }}:ro
       - {{ TLS_DIR }}:{{ CERT_DIR }}:ro
     logging:

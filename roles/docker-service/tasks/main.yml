@@ -5,12 +5,12 @@
  
 - name: import gpg key for docker repo
   apt_key:
-    url: https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg
+    url: "{{ docker_apt_key }}"
     state: present
 
 - name: create docker apt repo
   apt_repository:
-    repo: deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/debian stretch stable
+    repo: "{{ docker_repo }}"
     state: present
     filename: docker-ce
 
@@ -47,6 +47,6 @@
 
 - name: Install docker-compose
   get_url:
-    url: "https://get.daocloud.io/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64"
+    url: "{{ docker_compose_url }}"
     dest: /usr/local/bin/docker-compose
     mode: "0755"

@@ -3,16 +3,22 @@ master-02 ansible_host=192.168.1.112
 master-03 ansible_host=192.168.1.113
 worker-01 ansible_host=192.168.1.121
 worker-02 ansible_host=192.168.1.122
+worker-03 ansible_host=192.168.1.123
 
 [masters]
 master-01
+master-02
+master-03
 
 [etcds]
 master-01
+master-02
+master-03
 
 [workers]
 worker-01
 worker-02
+worker-03
 
 [k8s:children]
 masters
@@ -22,9 +28,5 @@ etcds
 [ca]
 localhost ansible_connection=local
 
-[all:vars]
-ansible_user=root
-CERT_DIR=/opt/certs/k8s
-CERT_PROFILE=kubernetes
-timezone=Asia/Hong_Kong
-K8S_CLUSTER_NAME=home-kube
+[haproxy]
+localhost ansible_connection=local
