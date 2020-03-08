@@ -33,4 +33,4 @@
 
 - name: start service
   shell: docker-compose -f "{{ PROJECT_DIR }}/docker-compose.yml" up -d --force-recreate
-  when: compose is changed
+  when: compose.changed is true
