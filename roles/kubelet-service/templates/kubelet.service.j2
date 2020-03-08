@@ -12,6 +12,7 @@ ExecStart=/usr/bin/kubelet \
   --node-ip={{ ansible_host }} \
   --image-pull-progress-deadline=2m \
   --kubeconfig={{ CONFIG_DIR }}/{{ CERT_NAME }}.kubeconfig \
+  --network-plugin=cni \
   --register-node=true \
   --pod-infra-container-image registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1 \
   --v=2

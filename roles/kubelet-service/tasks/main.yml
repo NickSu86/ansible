@@ -11,6 +11,7 @@
     owner: root
     group: root
     mode: 0644
+  register: config
 
 - name: prepare service
   template:
@@ -27,4 +28,4 @@
     state: restarted
     enabled: yes
     daemon_reload: yes
-  when: service_ready.changed is true
+  when: service_ready.changed is true or config.changed is true
