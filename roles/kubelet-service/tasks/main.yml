@@ -24,7 +24,7 @@
 - name: start service
   service:
     name: kubelet
-    state: started
+    state: restarted
     enabled: yes
     daemon_reload: yes
   when: service_ready.changed is true
