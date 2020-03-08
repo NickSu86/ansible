@@ -24,7 +24,7 @@ services:
     "--leader-elect=true", 
     "--root-ca-file={{ CERT_DIR }}/{{ CA_CERT_NAME }}",
     "--service-account-private-key-file={{ CERT_DIR }}/{{ SERVICE_ACCOUNT_KEY_NAME }}",
-    "--service-cluster-ip-range={{ CLUSTER_CIDR }}", 
+    "--service-cluster-ip-range={{ SERVICE_CIDR }}", 
     "--use-service-account-credentials=true", 
     "--v=2" ]
     volumes:
