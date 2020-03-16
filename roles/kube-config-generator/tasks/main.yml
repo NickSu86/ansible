@@ -3,7 +3,7 @@
     shell: kubectl config set-cluster {{ K8S_CLUSTER_NAME }} \
       --certificate-authority=ca.pem \
       --embed-certs=true \
-      --server=https://192.168.1.111:6443 \
+      --server=https://192.168.100.111:6443 \
       --kubeconfig={{ CERT_NAME }}.kubeconfig
     args:
         chdir: "{{ CERT_DIR }}"

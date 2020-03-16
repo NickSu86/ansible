@@ -1,19 +1,14 @@
-master-01 ansible_host=192.168.1.111
-master-02 ansible_host=192.168.1.112
-master-03 ansible_host=192.168.1.113
-worker-01 ansible_host=192.168.1.121
-worker-02 ansible_host=192.168.1.122
-worker-03 ansible_host=192.168.1.123
+master-01 ansible_host=192.168.100.111
+worker-01 ansible_host=192.168.100.121
+worker-02 ansible_host=192.168.100.122
+worker-03 ansible_host=192.168.100.123
+worker-04 ansible_host=192.168.100.124
 
 [masters]
 master-01
-master-02
-master-03
 
 [etcds]
 master-01
-master-02
-master-03
 
 [workers]
 worker-01

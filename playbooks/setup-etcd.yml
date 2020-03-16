@@ -6,7 +6,8 @@
     - version: 3.4.3-0
     - COMPONENT_ROLE: "{{ ansible_hostname }}"
     - COMPONENT_GROUP: kubernetes
-    - registry: 192.168.1.1:5000
+    - registry: 192.168.100.1:5000
+    - KUBERNETES_HOSTNAME: "{{ ansible_host }}"
   tasks:
     - import_role:
         name: ca-client

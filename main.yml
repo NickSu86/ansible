@@ -25,7 +25,7 @@
   remote_user: root
 
   vars:
-    brodcast_ip: "192.168.1.111"
+    brodcast_ip: "192.168.100.111"
     cluster_name: "my-k8s"
     cidr: "9.0.0.0/16"
     cluster_ip_range: "10.32.0.0/24"
@@ -45,7 +45,7 @@
   remote_user: root
   vars:
     cluster_name: "my-k8s"
-    brodcast_ip: "192.168.1.111"
+    brodcast_ip: "192.168.100.111"
     cidr: "9.0.0.0/16"
     cluster_ip_range: "10.32.0.0/24"
     cert_dir: "/etc/k8certs"

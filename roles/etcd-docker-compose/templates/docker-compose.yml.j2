@@ -13,7 +13,7 @@ services:
         soft: 65536
         hard: 65536
     network_mode: host
-    command:  /usr/local/bin/etcd --name {{ ansible_host }} --cert-file={{ CERT_DIR }}/kubernetes.pem --key-file={{ CERT_DIR }}/kubernetes-key.pem --peer-cert-file={{ CERT_DIR }}/kubernetes.pem --peer-key-file={{ CERT_DIR }}/kubernetes-key.pem --trusted-ca-file={{ CERT_DIR }}/ca.pem --peer-trusted-ca-file={{ CERT_DIR }}/ca.pem --peer-client-cert-auth --client-cert-auth --initial-advertise-peer-urls https://{{ ansible_host }}:2380 --listen-peer-urls https://{{ ansible_host }}:2380 --listen-client-urls https://{{ ansible_host }}:2379 --advertise-client-urls https://{{ ansible_host }}:2379 --initial-cluster-token etcd-cluster-0 --initial-cluster {{ ansible_host }}=https://{{ ansible_host }}:2380 --initial-cluster-state new --data-dir=/var/lib/etcd
+    command:  /usr/local/bin/etcd --name {{ ansible_host }} --cert-file={{ CERT_DIR }}/etcd.pem --key-file={{ CERT_DIR }}/etcd-key.pem --peer-cert-file={{ CERT_DIR }}/etcd.pem --peer-key-file={{ CERT_DIR }}/etcd-key.pem --trusted-ca-file={{ CERT_DIR }}/ca.pem --peer-trusted-ca-file={{ CERT_DIR }}/ca.pem --peer-client-cert-auth --client-cert-auth --initial-advertise-peer-urls https://{{ ansible_host }}:2380 --listen-peer-urls https://{{ ansible_host }}:2380 --listen-client-urls https://{{ ansible_host }}:2379 --advertise-client-urls https://{{ ansible_host }}:2379 --initial-cluster-token etcd-cluster-0 --initial-cluster {{ ansible_host }}=https://{{ ansible_host }}:2380 --initial-cluster-state new --data-dir=/var/lib/etcd
     volumes:
       - /etc/localtime:/etc/localtime
       - {{ PROJECT_DIR }}/etc:/etc/etcd:rw

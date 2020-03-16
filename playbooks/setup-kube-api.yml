@@ -3,7 +3,7 @@
   vars:
     - PROJECT_DIR: "{{ PROJECT_BASED_DIR }}/kube-api"
     - image_name: kube-apiserver
-    - registry: 192.168.1.1:5000
+    - registry: 192.168.100.1:5000
   tasks:
     - import_role:
         name: ca-client

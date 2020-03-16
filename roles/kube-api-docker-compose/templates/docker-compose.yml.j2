@@ -28,7 +28,7 @@ services:
 "--etcd-cafile={{ CERT_DIR }}/{{ CA_CERT_NAME }}",
 "--etcd-certfile={{ CERT_DIR }}/{{ ETCD_CERT_NAME }}",
 "--etcd-keyfile={{ CERT_DIR }}/{{ ETCD_KEY_NAME }}",
-"--etcd-servers=https://192.168.1.111:2379",
+"--etcd-servers=https://192.168.100.111:2379",
 "--event-ttl=1h",
 "--kubelet-certificate-authority={{ CERT_DIR }}/{{ CA_CERT_NAME }}",
 "--kubelet-client-certificate={{ CERT_DIR }}/{{ K8S_CERT_NAME }}",
